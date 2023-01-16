@@ -1,11 +1,8 @@
 import { Card } from "components/atoms/Card";
 import Input from "components/atoms/Input";
-import { useDefaultCountries } from "domain/countries/hooks/countries.hooks";
 import LiveRatesModules from "modules/LiveRatesModules";
 
 export default function App() {
-  const { data: idn } = useDefaultCountries();
-  console.log({ idn });
   return (
     <main className="relative z-10 h-full  md:m-auto md:mx-auto">
       <div className="flex flex-col gap-5 p-5">

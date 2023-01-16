@@ -87,6 +87,7 @@ export interface PostalCode {
 
 export interface Country {
   name: Name;
+  defaultActive?: boolean;
   tld: string[];
   cca2: string;
   ccn3: string;
@@ -96,6 +97,7 @@ export interface Country {
   status: string;
   unMember: boolean;
   currencies: Currencies;
+  currencyShort?: string;
   idd: Idd;
   capital: string[];
   altSpellings: string[];
@@ -121,4 +123,5 @@ export interface Country {
   borders: string[];
   gini: Gini;
   postalCode: PostalCode;
+  rates?: number;
 }

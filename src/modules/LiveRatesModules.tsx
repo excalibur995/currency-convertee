@@ -1,10 +1,24 @@
-import { Card } from "components/atoms/Card";
 import LiveRatesCountryCard from "components/molecules/LiveRatesCountryCard";
-import { Country } from "domain/countries/entities/country.entitites";
+import { Card } from "components/atoms/Card";
+import { useLivestremDefaultCountries } from "domain/liverates/hooks/liverates.hooks";
+import { useLiveRatesState } from "domain/liverates/states/liverates.states";
 import { useCountriesData } from "domain/countries/hooks/countries.hooks";
 
 const LiveRatesModules = () => {
-  const { data } = useCountriesData();
+  const {
+    countryList,
+    setCountry,
+    activecountry,
+    setActiveCountry,
+    setLiveRates,
+  } = useLiveRatesState((state) => state);
+  useCountriesData(undefined, setCountry);
+
+  useLivestremDefaultCountries({
+    countries: countryList,
+    onSuccess: setLiveRates,
+    activeBase: activecountry,
+  });
 
   return (
     <section className="flex flex-col gap-5">
@@ -18,8 +32,13 @@ const LiveRatesModules = () => {
       </div>
       <Card>
         <div className="grid grid-rows-4">
-          {(data as Country[]).slice(0, 4).map((item) => (
-            <LiveRatesCountryCard key={item.cca2} {...item} />
+          {countryList.slice(0, 4).map((item) => (
+            <LiveRatesCountryCard
+              onClick={setActiveCountry}
+              key={item.cca2}
+              item={item}
+              activeCountry={activecountry}
+            />
           ))}
         </div>
       </Card>

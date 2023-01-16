@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "hsl(192 79.3% 12.8%)",
+        secondary: "#3E2DC5",
         border: "rgba(255, 255, 255, 0.15)",
       },
       maxWidth: {
