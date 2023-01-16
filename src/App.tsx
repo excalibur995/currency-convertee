@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card } from "components/atoms/Card";
+import Input from "components/atoms/Input";
+import { useDefaultCountries } from "domain/countries/hooks/countries.hooks";
+import LiveRatesModules from "modules/LiveRatesModules";
 
-function App() {
+export default function App() {
+  const { data: idn } = useDefaultCountries();
+  console.log({ idn });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="relative z-10 h-full  md:m-auto md:mx-auto">
+      <div className="flex flex-col gap-5 p-5">
+        <section className="flex flex-col gap-5">
+          <div className="flex flex-col">
+            <h1 className="text-3xl font-semibold text-white">
+              Currency Convertee
+            </h1>
+            <p className="text-white">
+              Introducing Currency Converter calculator.
+            </p>
+          </div>
+          <Card>
+            <Input label="From" />
+            <Input label="To" />
+          </Card>
+        </section>
+        <LiveRatesModules />
+      </div>
+    </main>
   );
 }
-
-export default App;

@@ -1,13 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-width: 350px;
+  min-height: 561px;
+  margin: 0 auto;
+  background: #0c0828;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  font-family: Raleway, "sans-serif";
+}
+
+.radial-background {
+  background: radial-gradient(
+      circle at top left,
+      hsl(252 40.1% 22.5%),
+      rgba(255, 255, 255, 0) 15%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      hsl(192 79.3% 12.8%),
+      rgba(255, 255, 255, 0) 15%
+    );
+}
+
+@media (min-width: 900px) {
+  .radial-background {
+    background: radial-gradient(
+        circle at 15% 50%,
+        hsl(252 40.1% 22.5%),
+        rgba(255, 255, 255, 0) 15%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        hsl(192 79.3% 12.8%),
+        rgba(255, 255, 255, 0) 15%
+      );
+  }
 }
