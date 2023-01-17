@@ -18,9 +18,8 @@ const Input = ({ label, suffix = "$", ...inputProps }: InputProps) => {
             {suffix}
           </div>
         )}
-
         <input
-          className=":focus:ring-blue-500 :focus:border-blue-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+          className="block w-full rounded-lg border bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
           {...inputProps}
         />
       </div>

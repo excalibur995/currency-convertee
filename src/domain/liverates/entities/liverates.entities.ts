@@ -5,10 +5,10 @@ export type CountryLiveRates = Country & {
   rates?: LiveRates;
 };
 export interface LiveRatesStates {
-  countryList: Country[];
+  liveRatesCountry: Country[];
   liveRates?: LiveRates;
-  activecountry?: string;
-  setCountry: (countries: Country[]) => void;
+  activeCountry?: string;
+  setLiveRatesCountry: (countries: Country[]) => void;
   setLiveRates: (countries: Country[]) => void;
   addNewCountry: (country: Country) => void;
   setActiveCountry: (country: Country) => void;

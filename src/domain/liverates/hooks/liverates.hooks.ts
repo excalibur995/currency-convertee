@@ -18,12 +18,13 @@ export function useLivestremDefaultCountries({
   onSuccess,
 }: LiveRatesParams) {
   return useQuery(
-    ["useLiveStreamData", countries, activeBase],
+    ["useLiveStreamData", countries.length, activeBase],
     async () =>
       fetchLiveStream(getLiveRatesCountryCurrencies(countries), activeBase),
     {
       refetchInterval: 60 * 1000,
       enabled: countries?.length > 0,
+      notifyOnChangeProps: ["data"],
       onSuccess: (data) => {
         return (
           onSuccess &&

@@ -27,20 +27,23 @@ export async function fetchLiveStream(rates: string[], base?: string) {
 
 export function mutateCountryData(
   countries: Country[],
-  activecountry?: string
+  activeCountry?: string
 ) {
   const liveStreamCountry = [];
   for (const country of countries) {
     if (liveStreamCountry.length === 4) break;
     if (DEFAULT_LIVE_STREAM_COUNTRY.has(country.cca2)) {
       country.defaultActive = false;
-      if (!!activecountry) {
-        if (country.currencyShort === activecountry) {
+      if (!!activeCountry) {
+        if (country.currencyShort === activeCountry) {
           country.defaultActive = true;
         }
       }
-      if (!activecountry && country.cca2 === DEFAULT_COUNTRY_CODE)
+      if (!activeCountry && country.cca2 === DEFAULT_COUNTRY_CODE) {
         country.defaultActive = true;
+        country.currencyShort = "IDR";
+      }
+
       liveStreamCountry.push(country);
     }
   }
@@ -52,9 +55,7 @@ export function mutateCountryData(
 export function getLiveRatesCountryCurrencies(countries: Country[]): string[] {
   const rates: string[] = [];
   countries.forEach((country) => {
-    if (country.currencies) {
-      rates.push(Object.keys(country.currencies)[0]);
-    }
+    rates.push(country.currencyShort);
   });
   return rates;
 }
@@ -64,9 +65,7 @@ export function mutateCountryWithLiveRates(
   liveRates: LiveRates
 ) {
   return country.map((item) => {
-    const [key] = Object.keys(item.currencies);
-    item.rates = liveRates[key];
-    item.currencyShort = key;
+    item.rates = liveRates[item.currencyShort];
     return item;
   });
 }

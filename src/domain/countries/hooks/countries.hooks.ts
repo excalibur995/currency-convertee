@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { DEFAULT_COUNTRY_CODE } from "shared/utils/constant";
+import { mutateCurrencyData } from "shared/utils/utils";
 import { Country } from "../entities/country.entitites";
 import { fetchCountries } from "../services/countries.service";
 
@@ -12,7 +13,7 @@ export function useCountriesData(
     keepPreviousData: true,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
-    onSuccess,
+    onSuccess: (data) => onSuccess && onSuccess(mutateCurrencyData(data)),
     select,
   });
 }

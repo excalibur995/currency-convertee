@@ -16,8 +16,7 @@ export default function App() {
             </p>
           </div>
           <Card>
-            <Input label="From" />
-            <Input label="To" />
+            <Input label="Amount" />
           </Card>
         </section>
         <LiveRatesModules />
